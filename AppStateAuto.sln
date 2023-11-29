@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppStateAuto", "AppStateAuto\AppStateAuto\AppStateAuto.csproj", "{5AC51DF5-7505-40BC-AB01-57DA2CFDA954}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppStateAuto.Client", "AppStateAuto\AppStateAuto.Client\AppStateAuto.Client.csproj", "{3254D85B-2548-4E3F-9EFC-F49E8228D24F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AC51DF5-7505-40BC-AB01-57DA2CFDA954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AC51DF5-7505-40BC-AB01-57DA2CFDA954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AC51DF5-7505-40BC-AB01-57DA2CFDA954}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AC51DF5-7505-40BC-AB01-57DA2CFDA954}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3254D85B-2548-4E3F-9EFC-F49E8228D24F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3254D85B-2548-4E3F-9EFC-F49E8228D24F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3254D85B-2548-4E3F-9EFC-F49E8228D24F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3254D85B-2548-4E3F-9EFC-F49E8228D24F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92A48726-CBB7-453E-8634-2C9688634143}
+	EndGlobalSection
+EndGlobal
