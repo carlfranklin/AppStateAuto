@@ -1,4 +1,4 @@
-﻿namespace AppStateWasm.Client;
+﻿namespace AppStateAuto.Client;
 
 public interface IAppState
 {

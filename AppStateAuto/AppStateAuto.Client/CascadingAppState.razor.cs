@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Blazored.LocalStorage;
 using System.Text.Json;
-using AppStateWasm.Client;
 
 namespace AppStateAuto.Client;
 
@@ -86,37 +85,44 @@ public partial class CascadingAppState : ComponentBase, IAppState
         // serialize 
         var state = (IAppState)this;
         // save
-        await localStorage.SetItemAsync(StorageKey, state);
+        await localStorage.SetItemAsync<IAppState>(StorageKey, state);
     }
 
     public async Task Load()
     {
-        var json = await localStorage.GetItemAsStringAsync(StorageKey);
-        if (json == null || json.Length == 0) return;
-        var state = JsonSerializer.Deserialize<AppState>(json);
-        if (state != null)
+        try
         {
-            if (DateTime.Now.Subtract(state.LastStorageSaveTime).TotalSeconds <= StorageTimeoutInSeconds)
+            var json = await localStorage.GetItemAsStringAsync(StorageKey);
+            if (json == null || json.Length == 0) return;
+            var state = JsonSerializer.Deserialize<AppState>(json);
+            if (state != null)
             {
-                // decide whether to set properties manually or with reflection
-
-                // comment to set properties manually
-                //this.Message = state.Message;
-                //this.Count = state.Count;
-
-                // set properties using Reflaction
-                var t = typeof(IAppState);
-                var props = t.GetProperties();
-                foreach (var prop in props)
+                if (DateTime.Now.Subtract(state.LastStorageSaveTime).TotalSeconds <= StorageTimeoutInSeconds)
                 {
-                    if (prop.Name != "LastStorageSaveTime")
-                    {
-                        object value = prop.GetValue(state);
-                        prop.SetValue(this, value, null);
-                    }
-                }
+                    // decide whether to set properties manually or with reflection
 
+                    // comment to set properties manually
+                    //this.Message = state.Message;
+                    //this.Count = state.Count;
+
+                    // set properties using Reflaction
+                    var t = typeof(IAppState);
+                    var props = t.GetProperties();
+                    foreach (var prop in props)
+                    {
+                        if (prop.Name != "LastStorageSaveTime")
+                        {
+                            object value = prop.GetValue(state);
+                            prop.SetValue(this, value, null);
+                        }
+                    }
+
+                }
             }
+        }
+        catch (Exception ex)
+        {
+
         }
     }
 }
