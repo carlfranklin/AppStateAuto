@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AppStateAuto.Client\AppStateAuto.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
+	  <PackageReference Include="Blazored.LocalStorage" Version="4.4.0" />
   </ItemGroup>
 
 </Project>
