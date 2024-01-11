@@ -198,10 +198,10 @@ Now we can refer to `AppState` and it's properties anywhere in the component. Th
 
 <p>
     This is a demonstration of how to use a Cascading Parameter to share state between components
-    in a .NET Blazor Web App using InteractiveAuto mode.
+    in a .NET Blazor Web App using InteractiveWebAssembly mode.
 </p>
 
-<button disabled="@uiDisabled" class="btn btn-primary" @onclick="UpdateMessageButtonClicked">Update Message</button>
+<button class="btn btn-primary" @onclick="UpdateMessageButtonClicked">Update Message</button>
 <br />
 <br />
 <h3>@AppState.Message</h3>
@@ -210,17 +210,6 @@ Now we can refer to `AppState` and it's properties anywhere in the component. Th
 {
     [CascadingParameter]
     public CascadingAppState AppState { get; set; }
-
-    bool uiDisabled = true;
-
-    protected override void OnAfterRender(bool firstRender)
-    {
-        if (firstRender)
-        {
-            uiDisabled = false;
-            StateHasChanged();
-        }
-    }
 
     void UpdateMessageButtonClicked()
     {
