@@ -20,6 +20,10 @@ public partial class CascadingAppState : ComponentBase, IAppState
 	[Parameter]
 	public RenderFragment ChildContent { get; set; }
 
+	// Alternative property change notification event
+	public event Action<string> PropertyChanged;
+	private void NotifyPropertyChanged(string value) => PropertyChanged?.Invoke(value);
+
 	// Used for tracking changes
 	public IAppState GetCopy()
 	{
@@ -41,6 +45,8 @@ public partial class CascadingAppState : ComponentBase, IAppState
 			message = value;
 			// Force a re-render
 			StateHasChanged();
+			// Raise the PropertyChanged event:
+			NotifyPropertyChanged("Message");
 			// Save to local storage
 			new Task(async () =>
 			{
@@ -57,6 +63,7 @@ public partial class CascadingAppState : ComponentBase, IAppState
 		{
 			count = value;
 			StateHasChanged();
+			NotifyPropertyChanged("Count");
 			new Task(async () =>
 			{
 				await Save();
